@@ -15,6 +15,6 @@
     "files.associations": {
         "spi_master.h": "c"
     },
-    "idf.portWin": "COM19",
+    "idf.portWin": "COM3",
     "idf.flashType": "UART"
 }

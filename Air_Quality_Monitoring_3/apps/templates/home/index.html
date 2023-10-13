@@ -1,0 +1,142 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+			
+	<div class="content">
+		<div class="panel-header bg-primary-gradient">
+			<div class="page-inner py-5">
+				<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+					<div>
+						<h2 class="text-white pb-2 fw-bold">Radiation UV and Air Quality monitoring</h2>
+						<h5 class="text-white op-7 mb-2">Providing you with complete and secure data monitoring through a DIY IoT platform</h5>
+					</div>
+					<div class="ml-md-auto py-2 py-md-0">
+						<a href="#" class="btn btn-white btn-border btn-round mr-2">Historics</a>
+						<a href="#" class="btn btn-secondary btn-round">Add node</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="page-inner mt--5">
+			<div class="row mt--2">
+				<div class="col-md-12 ml-auto mr-auto">
+					<div class="card full-height">
+						<div class="card-body">
+							<div class="card-title">Overall statistics</div>
+							<div class="card-category">Updated information about statistics in the system.</div>
+							<div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
+								<div class="px-2 pb-2 pb-md-0 text-center">
+									<div id="circles-1"></div>
+									<h6 class="fw-bold mt-3 mb-0">CO</h6>
+								</div>
+								<div class="px-2 pb-2 pb-md-0 text-center">
+									<div id="circles-2"></div>
+									<h6 class="fw-bold mt-3 mb-0">NH2</h6>
+								</div>
+								<div class="px-2 pb-2 pb-md-0 text-center">
+									<div id="circles-3"></div>
+									<h6 class="fw-bold mt-3 mb-0">UV</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="card">
+						<div class="card-header">
+							<div class="card-head-row">
+								<div class="card-title">User Statistics</div>
+								<div class="card-tools">
+									<a href="#" class="btn btn-info btn-border btn-round btn-sm mr-2">
+										<span class="btn-label">
+											<i class="fa fa-pencil"></i>
+										</span>
+										Export
+									</a>
+									<a href="#" class="btn btn-info btn-border btn-round btn-sm">
+										<span class="btn-label">
+											<i class="fa fa-print"></i>
+										</span>
+										Print
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="chart-container" style="min-height: 375px">
+								<canvas id="statisticsChart"></canvas>
+							</div>
+							<div id="myChartLegend"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-card-no-pd">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header">
+							<div class="card-head-row card-tools-still-right">
+								<h4 class="card-title">Network Location</h4>
+								<div class="card-tools">
+									<button class="btn btn-icon btn-link btn-primary btn-xs"><span class="fa fa-angle-down"></span></button>
+									<button class="btn btn-icon btn-link btn-primary btn-xs btn-refresh-card"><span class="fa fa-sync-alt"></span></button>
+									<button class="btn btn-icon btn-link btn-primary btn-xs"><span class="fa fa-times"></span></button>
+								</div>
+							</div>
+							<p class="card-category">
+							The IoT solution developed is currently operating in Cochabamba-Bolivia in the electronics and telecommunications laboratories of Univalle.</p>
+						</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="table-responsive table-hover table-sales">
+										<table class="table">
+											<tbody>
+												<tr>
+													<td>
+														<div class="flag">
+															<img src="/static/assets/img/flags/bo.png" alt="Bolivia">
+														</div>
+													</td>
+													<td>Bolivia</td>
+													<td class="text-right">
+														Univalle-Electronics and telecommunications laboratories 
+													</td>
+													<td class="text-right">
+														Current-Nodes:
+														<span id="nodeState4">2</span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mapcontainer">
+										<div id="map-example" class="vmap"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+	<script src="/static/assets/js/setting-demo.js"></script>
+	<script src="/static/assets/js/demo.js"></script>
+{% endblock javascripts %}
