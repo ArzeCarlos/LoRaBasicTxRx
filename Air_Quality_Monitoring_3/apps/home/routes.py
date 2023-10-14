@@ -19,6 +19,7 @@ topic = "values3"
 client_id = f'python-mqtt-{random.randint(0, 1000)}'
 username = 'emqx'
 password = '**********'
+flag=0
 def connect_mqtt():
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
@@ -46,22 +47,16 @@ def subscribe(client: mqtt_client):
         con.close()
     client.subscribe(topic)
     client.on_message = on_message
-def thread_function(name):
-    client = connect_mqtt()
-    subscribe(client)
-    client.loop_forever()
+
 @blueprint.route('/index')
 @login_required
 def index():
-    format = "%(asctime)s: %(message)s"
-    logging.basicConfig(format=format, level=logging.INFO,
-
-                        datefmt="%H:%M:%S")
-    logging.info("Main    : before creating thread")
-    x = threading.Thread(target=thread_function, args=(1,))
-    logging.info("Main    : before running thread")
-    x.start()
-    logging.info("Main    : wait for the thread to finish")
+    global flag
+    if(flag==0):
+        client = connect_mqtt()
+        subscribe(client)
+        client.loop_start()
+        flag=1
     '''dictNode={}
     dictNode['nodeId']=2
     dictNode['rssi']=3

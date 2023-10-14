@@ -166,13 +166,11 @@ function removeFirstData() {
 	});
 }
 const options = {
-	connectTimeout: 4000,
-  
+	connectTimeout: 60000,
 	// Authentication
-	clientId: "iotmc",
+	clientId: 'mqttjs_' + Math.random().toString(16),
 	username: "web_client",
 	password: "123456",
-  
 	keepalive: 60,
 	clean: true,
 };
